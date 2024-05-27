@@ -1,0 +1,45 @@
+body{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+    height: 100vh;
+}
+
+.container{
+    background-color: rgb(243, 141, 47);
+    height: 400px;
+    width: 400px;
+    border-radius: 10px;
+    /* display: flex; */
+    justify-self: center;
+    
+}
+
+.dialogue_box{
+    display: flex;
+    justify-content: center;
+}
+.login_text{
+    justify-content: center;
+}
+
+.user_name  {
+    margin: 40px 10px;
+    font-size: 2.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+}
+.password  {
+    margin: 10px;
+    font-size: 2.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+    margin: 40px 10px;
+}
+
+.text_area {
+    width: 55%;
+}

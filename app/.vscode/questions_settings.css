@@ -1,0 +1,113 @@
+:root{
+    --first-color: #f84572;
+    --first-color-dark: #220217;
+    --first-color-lighten: #fa86d3;
+
+    --body-font: 'Open Sans', sans-serif;
+    --h1-font-size: 1.5rem;
+    --normal-font-size: .938rem;
+    --small-font-size: .813rem;
+}
+
+@media screen and (min-width: 768px){
+    :root{
+      --normal-font-size: 1rem;
+      --small-font-size: .875rem;
+    }
+}
+
+*,::before,::after{
+    box-sizing: border-box;
+  }
+  
+  body{
+    margin: 0;
+    padding: 0;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    color: var(--first-color-dark);
+  }
+
+  .answerQuestions{
+    display: grid;
+    grid-template-columns: 100%;
+    height: 100vh;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+   
+  .setQuestions{
+    display: grid;
+    grid-template-columns: 100%;
+    height: 100vh;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+
+  .logOut{
+    display: grid;
+    grid-template-columns: 100%;
+    height: 100vh;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+
+  .answerQuestions_button{
+    display: block;
+    padding: 1rem;
+    margin: 2rem 0;
+    background-color: var(--first-color);
+    color: #FFF;
+    font-weight: 600;
+    text-align: center;
+    border-radius: .5rem;
+    transition: .3s;
+  }
+
+  .answerQuestions_button:hover{
+    background-color: var(--first-color-dark);
+  }
+
+  .setQuestions_button{
+    display: block;
+    padding: 1rem;
+    margin: 2rem 0;
+    background-color: var(--first-color);
+    color: #FFF;
+    font-weight: 600;
+    text-align: center;
+    border-radius: .5rem;
+    transition: .3s;
+  }
+
+  .setQuestions_button:hover{
+    background-color: var(--first-color-dark);
+  }
+
+  .logOut_button{
+    display: block;
+    padding: 1rem;
+    margin: 2rem 0;
+    background-color: var(--first-color);
+    color: #FFF;
+    font-weight: 600;
+    text-align: center;
+    border-radius: .5rem;
+    transition: .3s;
+  }
+  
+  .logOut__button:hover{
+    background-color: var(--first-color-dark);
+  }
+
+  @keyframes animate-logOut{
+    0%{
+      transform: scale(1,1);
+    }
+    50%{
+      transform: scale(1.1,1.1);
+    }
+    100%{
+      transform: scale(1,1);
+    }
+}
