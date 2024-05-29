@@ -1,0 +1,28 @@
+:root{
+  --color1:red;
+  --color2:blue;
+  --bgcol1: black;
+  --bgcol2:gray;
+  --bgcol3:silver;
+  --col_text:black;
+  --col_text2:white;
+  --col_info:rgb(116, 116, 235);
+}
+.bginfo{
+  background-color: var(--col_info);
+}
+.col_text , .col1{
+  color: var(--col_text);
+}
+.col_text2 , .col2{
+  color: var(--col_text2);
+}
+.rbg{
+  background-color: red;
+}
+.bg1{
+  background: var(--bgcol1);
+}
+.bgcol1{
+  background-color: var(--color2);
+}
