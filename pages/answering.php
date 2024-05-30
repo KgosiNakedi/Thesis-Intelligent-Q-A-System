@@ -1,41 +1,101 @@
-<form class="v-flex gp1rem c-c max700 col2">
+<?php
+require_once './commons/mysql.php';
+if (!isset($_GET['quiz'])) {
+  header('Location: ./index.php');
+}
 
+$quizData = $Db->query(
+  "SELECT uq.score,q.id, 
+  q.title from quiz as q 
+   left outer join user_quiz as uq on q.id = uq.quiz_id  where (uq.user_id = ? 
+   or uq.user_id is null) and q.id = ?",
+  [$_SESSION['user_id'], $_GET['quiz']]
+)->getRows()[0];
+
+if ($quizData['score']) {
+  header('Location: ./index.php');
+}
+
+$questions = $Db->query("SELECT * from questions where quiz_id = ?", [$_GET['quiz']])->getRows();
+?>
+<form method="post" action='./actions/uploa_answers.php' class="v-flex gp1rem c-c max700 col2">
   <h1 class='mxpw algn_l'>
-    Title
+    <?php   echo $quizData['title'] ?>h
   </h1>
-  <div class='v-flex c-c mxpw'>
+<input value="<?php echo $quizData['id'] ?>" type="hidden" name="quiz_id">
+  <?php
+  foreach ($questions as $key => $value) {
+  ?>
+    <div class='v-flex c-c mxpw'>
 
-    <span>
-      (Q1) Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis amet iusto eligendi voluptate dolore minus, tenetur nemo doloribus dignissimos alias, quam repellendus vel vero ad explicabo! Itaque iste illo vel.
-    </span>
+      <span class='mxpw algn_l'>
+        <?php echo '(' . $key + 1 . ')' ?> <?php echo $value['question'] ?>
+      </span>
 
-    <div class='mxpw v-flex gp05rem mt1'>
-      <div class='h-flex fs-fs gp1rem'>
-        <input name='q1' class='option_radio' id='q1op1' type="radio">
-        <label for='q1op1' class='pbtn  round1 mxpw option' for="op1">
-          A dsakd askjd as djsak djkas jkdsa jkd askj djask
-        </label>
-      </div>
+      <div class='mxpw v-flex gp05rem mt1'>
 
-      <div class='h-flex fs-fs gp1rem'>
-        <input name='q1' class='option_radio' id='q1op3' type="radio">
-        <label for='q1op3' class='pbtn  round1 mxpw option' for="op1">
-          A dsakd askjd as djsak djkas jkdsa jkd askj djask
-        </label>
-      </div>
+        <?php
+        if ($value['optiona']) {
+        ?>
+          <div class='h-flex fs-fs gp1rem'>
+            <input value='a' required name="question_<?php echo $value['id'] ?>" class='option_radio' id="question_<?php echo $value['id'] ?>_a" type="radio">
+            <label for="question_<?php echo $value['id'] ?>_a" class='pbtn  round1 mxpw option' for="op1">
+              A.<?php echo $value['optiona'] ?>
+            </label>
+          </div>
+        <?php
+        }
+        ?>
+
+        <?php
+        if ($value['optionb']) {
+        ?>
+          <div class='h-flex fs-fs gp1rem'>
+            <input value='b' required name="question_<?php echo $value['id'] ?>" class='option_radio' id="question_<?php echo $value['id'] ?>_b" type="radio">
+            <label for="question_<?php echo $value['id'] ?>_b" class='pbtn  round1 mxpw option' for="op1">
+              B.<?php echo $value['optionb'] ?>
+            </label>
+          </div>
+        <?php
+        }
+        ?>
+
+        <?php
+        if ($value['optionc']) {
+        ?>
+          <div class='h-flex fs-fs gp1rem'>
+            <input value='c' required name="question_<?php echo $value['id'] ?>" class='option_radio' id="question_<?php echo $value['id'] ?>_c" type="radio">
+            <label for="question_<?php echo $value['id'] ?>_c" class='pbtn  round1 mxpw option' for="op1">
+              C.<?php echo $value['optionc'] ?>
+            </label>
+          </div>
+        <?php
+        }
+        ?>
 
 
-      <div class='h-flex fs-fs gp1rem'>
-        <input name='q1' class='option_radio' id='q1op2' type="radio">
-        <label for='q1op2' class='pbtn  round1 mxpw option' for="op1">
-          A dsakd askjd as djsak djkas jkdsa jkd askj djask
-        </label>
+        <?php
+        if ($value['optiond']) {
+        ?>
+          <div class='h-flex fs-fs gp1rem'>
+            <input value='d' required name="question_<?php echo $value['id'] ?>" class='option_radio' id="question_<?php echo $value['id'] ?>_d" type="radio">
+            <label for="question_<?php echo $value['id'] ?>_d" class='pbtn  round1 mxpw option' for="op1">
+              D.<?php echo $value['optiond'] ?>
+            </label>
+          </div>
+        <?php
+        }
+        ?>
+
+
+
       </div>
     </div>
-  </div>
+  <?php
+  }
+  ?>
 
-
-  <div class='mxpw'> 
+  <div class='mxpw'>
     <button class='mxpw pbtn'>Submit</button>
   </div>
 </form>
@@ -45,9 +105,10 @@
   input:checked+.option {
     background: var(--col_info);
   }
-  .option_radio{
+
+  .option_radio {
     opacity: 0;
-    position:fixed;
+    position: fixed;
     z-index: -1;
   }
 </style>

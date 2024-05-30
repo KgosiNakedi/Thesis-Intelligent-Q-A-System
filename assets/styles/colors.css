@@ -7,6 +7,7 @@
   --col_text:black;
   --col_text2:white;
   --col_info:rgb(116, 116, 235);
+  --col_error:rgb(241, 73, 73);
 }
 .bginfo{
   background-color: var(--col_info);
@@ -26,3 +27,6 @@
 .bgcol1{
   background-color: var(--color2);
 }
+.bgerror{
+background: var(--col_error);
+} 

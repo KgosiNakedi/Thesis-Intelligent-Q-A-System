@@ -14,6 +14,7 @@ if (isset($_GET['page'])) {
     $page = './pages/not_found.php';
   }
 }
+// dd($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +28,7 @@ if (isset($_GET['page'])) {
   <link rel="stylesheet" href="https://font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.css" integrity="sha512-U9Y1sGB3sLIpZm3ePcrKbXVhXlnQNcuwGQJ2WjPjnp6XHqVTdgIlbaDzJXJIAuCTp3y22t+nhI4B88F/5ldjFA==" crossorigin="anonymous" referrerpolicy="no-referrer" /></head>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-
+<script src="./assets/scripts/scrptes.js"></script>
 <style>
   .login__img {
     position: fixed;
@@ -116,7 +117,6 @@ body::before{
     color:var(--col_text);
   }
 </style>
-
 <body>
 <img src="login-bg.png" alt="" class="login__img" />
   <header class='navbar mt1'>
@@ -130,7 +130,7 @@ body::before{
       <a href="./" class='v-flex c-c '>
   
       <i class="ri-home-5-line fs8"></i>
-        Questions
+        Quizes
       </a>
       <a href="?page=users" class='v-flex c-c'>
       <i class="ri-user-3-line fs8"></i>
@@ -148,7 +148,7 @@ body::before{
 
      </span>
       </a>
-      <a href="?page=profile_info" class='imgcc v-flex c-c'>
+      <a href="?page=user&userid=<?php echo  $_SESSION['user_id'] ?>" class='imgcc v-flex c-c'>
         <img class='profile_image' src="<?php echo  $_SESSION['image_url'] ?>" alt="image">
        <span class='no_wrap'> Profile info</span>
       </a>
