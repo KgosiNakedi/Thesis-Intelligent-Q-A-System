@@ -2,10 +2,10 @@
 <?php
 require_once './commons/mysql.php';
 $quizs = 
-$Db->query("SELECT q.id, q.title, q.created_at,u.username,u.fname,u.lname , q.num_questions from quiz as q INNER join users as u on q.create_by = u.id left outer join user_quiz as uq on q.id = uq.quiz_id  where uq.user_id = ? or uq.user_id is null",[$_SESSION['user_id']])->getRows();
+$Db->query("SELECT q.id,uq.score, q.title, q.created_at,u.username,u.fname,u.lname , q.num_questions from quiz as q INNER join users as u on q.create_by = u.id left outer join user_quiz as uq on q.id = uq.quiz_id  where uq.user_id = ? or uq.user_id is null ORDER BY q.id DESC",[$_SESSION['user_id']])->getRows();
+//header('Location: ?page=dsadas');
 
-
-
+//echo  toJson($quizs);
 //dd($quizs);
 ?>
 <div class='mxpw'>
@@ -15,7 +15,7 @@ $Db->query("SELECT q.id, q.title, q.created_at,u.username,u.fname,u.lname , q.nu
   </form>
 </div>
 
-<div class="h-flex fr mxpw c-c gp1rem mt2">
+<div class="h-flex fr mxpw c-c gp2rem mt2">
 
 <?php
         foreach ($quizs as $key => $value) {
@@ -56,6 +56,19 @@ $Db->query("SELECT q.id, q.title, q.created_at,u.username,u.fname,u.lname , q.nu
       </h2>
     </div>
 
+
+    <?php if($value['score']){ ?>
+    <div class='h-flex fs-c gp1rem'>
+      <span class='fs1 '>
+        Score:
+      </span>
+      <h2 class='no_wrap'>
+      <?php echo $value['score'] ?>
+      </h2>
+    </div>
+<?php
+}
+?>
 
   </a>
   <?php

@@ -8,6 +8,7 @@
   --col_text2:white;
   --col_info:rgb(116, 116, 235);
   --col_error:rgb(241, 73, 73);
+  --col_success:rgb(66, 197, 66);
 }
 .bginfo{
   background-color: var(--col_info);

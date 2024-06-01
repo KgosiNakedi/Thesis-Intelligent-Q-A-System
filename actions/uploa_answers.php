@@ -7,6 +7,10 @@ require_once '../commons/function.php';
 $quizid = $_POST['quiz_id'];
 unset($_POST['quiz_id']);
 echo $quizid ;
+if(count($Db->query("SELECT id FROM user_quiz where user_id = ? and quiz_id = ?",[$_SESSION['user_id'],$quizid])->getRows()) > 0){
+  goBack();
+  die();
+}
 //$quizdata = $Db("SELECT * FROM questions")->getRows();
 $numCorrect = 0;
 foreach ($_POST as $key => $value) {

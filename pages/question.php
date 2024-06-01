@@ -6,7 +6,7 @@ if (!isset($_GET['quiz_id'])) {
 $quiz = $Db->query("SELECT q.discriiption,uq.score,q.id, q.title, q.created_at,u.username,u.fname,u.lname , q.num_questions from quiz as q INNER join users as u on q.create_by = u.id left outer join user_quiz as uq on q.id = uq.quiz_id or uq.id is null where (uq.user_id = ? or uq.user_id is null) and q.id = ?", [$_SESSION['user_id'], $_GET['quiz_id']])->getRows()[0];
 
 
-
+//echo toJson($quiz);
 //dd($quiz);
 ?>
 
@@ -53,14 +53,25 @@ $quiz = $Db->query("SELECT q.discriiption,uq.score,q.id, q.title, q.created_at,u
   </div>
   <?php
   } 
-  else {
+  // else {
+  // 
   ?>
 
-  <div class="mxpw h-flex fs-c">
+   <!-- <div class="mxpw h-flex fs-c">
     <a href='?page=answering&quiz=<?php echo $quiz['id']?>' class='pbtn v-flex c-c col2  enter mxpw bgcol1'>View answers</a>
+   </div> -->
+
+  <?php //}?>
+
+  <?php
+  if ($quiz['score']  || isAdmin()) {
+  ?>
+
+<div class="mxpw h-flex fs-c">
+    <a href='?page=correct_answers&quiz=<?php echo $quiz['id']?>' class='pbtn v-flex c-c col2  enter mxpw bgcol1'>View answers</a>
   </div>
-
-  <?php }?>
-
+  <?php
+  }
+  ?>
 
 </div>

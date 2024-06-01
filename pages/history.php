@@ -1,3 +1,20 @@
+<?php
+require_once './commons/mysql.php';
+require_once './commons/function.php';
+require_once './session.php';
+
+$sql = "SELECT uq.quiz_id as id,u.id as userid, u.fname ,u.lname , u.username ,uq.score , uq.created_at
+FROM users as u inner join user_quiz as uq on uq.user_id  = u.id";
+$params = [];
+if(!isAdmin()){
+  $sql  .= " where u.id = ?";
+  $params = [$_SESSION['user_id']];
+}
+
+$userData = $Db->query(
+  $sql,$params)->getRows();
+//echo toJson($userData);
+?>
 <style>
   #customers {
   font-family: Arial, Helvetica, sans-serif;
@@ -24,63 +41,26 @@
 </style>
 
 <div class="max700">
-<h1 class='mb2 col2'>A Fancy Table</h1>
+<h1 class='mb2 col2'>Histroy</h1>
 
 <table id="customers">
   <tr>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
+    <th>User</th>
+    <th>Score</th>
+    <th>Time</th>
   </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
+
+  <?php
+        foreach ($userData as $key => $value) {
+        ?>
+  <tr onclick="window.location='?page=correct_answers&user=<?php echo $value['userid']?>&quiz=<?php echo $value['id']?>'">
+    <td><?php echo $value['fname'].' '.$value['lname']?></td>
+    <td><?php echo $value['score']?></td>
+    <td><?php echo $value['created_at']?></td>
   </tr>
-  <tr>
-    <td>Berglunds snabbköp</td>
-    <td>Christina Berglund</td>
-    <td>Sweden</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr>
-  <tr>
-    <td>Ernst Handel</td>
-    <td>Roland Mendel</td>
-    <td>Austria</td>
-  </tr>
-  <tr>
-    <td>Island Trading</td>
-    <td>Helen Bennett</td>
-    <td>UK</td>
-  </tr>
-  <tr>
-    <td>Königlich Essen</td>
-    <td>Philip Cramer</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Laughing Bacchus Winecellars</td>
-    <td>Yoshi Tannamuri</td>
-    <td>Canada</td>
-  </tr>
-  <tr>
-    <td>Magazzini Alimentari Riuniti</td>
-    <td>Giovanni Rovelli</td>
-    <td>Italy</td>
-  </tr>
-  <tr>
-    <td>North/South</td>
-    <td>Simon Crowther</td>
-    <td>UK</td>
-  </tr>
-  <tr>
-    <td>Paris spécialités</td>
-    <td>Marie Bertrand</td>
-    <td>France</td>
-  </tr>
+  <?php
+  }
+  ?>
+ 
 </table>
 </div>

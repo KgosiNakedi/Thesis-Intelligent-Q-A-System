@@ -26,8 +26,9 @@ if (isset($_GET['page'])) {
   <link rel="stylesheet" href="./assets/styles/main.css" class="css">
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/solid.min.css" integrity="sha512-Hp+WwK4QdKZk9/W0ViDvLunYjFrGJmNDt6sCflZNkjgvNq9mY+0tMbd6tWMiAlcf1OQyqL4gn2rYp7UsfssZPA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.css" integrity="sha512-U9Y1sGB3sLIpZm3ePcrKbXVhXlnQNcuwGQJ2WjPjnp6XHqVTdgIlbaDzJXJIAuCTp3y22t+nhI4B88F/5ldjFA==" crossorigin="anonymous" referrerpolicy="no-referrer" /></head>
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.css" integrity="sha512-U9Y1sGB3sLIpZm3ePcrKbXVhXlnQNcuwGQJ2WjPjnp6XHqVTdgIlbaDzJXJIAuCTp3y22t+nhI4B88F/5ldjFA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 <script src="./assets/scripts/scrptes.js"></script>
 <style>
   .login__img {
@@ -62,19 +63,21 @@ if (isset($_GET['page'])) {
     z-index: 10;
     border-radius: 1rem;
 
-   
+
   }
-body::before{
-  position: fixed;
-  z-index: 1;
-  content: '';
-  top: 0px;
-  left: 0px;
-  height: 100vh;
-  width: 100vw;
-  background-color: hsla(0, 0%, 10%, .5);
-  backdrop-filter: blur(8px);
-}
+
+  body::before {
+    position: fixed;
+    z-index: 1;
+    content: '';
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    width: 100vw;
+    background-color: hsla(0, 0%, 10%, .5);
+    backdrop-filter: blur(8px);
+  }
+
   .navbar>div {
     display: flex;
     align-items: center;
@@ -110,53 +113,65 @@ body::before{
     display: flex;
     align-items: center;
     justify-content: center;
-   
+
   }
-  a{
+
+  a {
     text-decoration: none;
-    color:var(--col_text);
+    color: var(--col_text);
   }
 </style>
+
 <body>
-<img src="login-bg.png" alt="" class="login__img" />
+  <img src="login-bg.png" alt="" class="login__img" />
   <header class='navbar mt1'>
     <div class='page_padding col_text '>
-    
+
 
       <div class='logo'>
 
         Logo
       </div>
       <a href="./" class='v-flex c-c '>
-  
-      <i class="ri-home-5-line fs8"></i>
+
+        <i class="ri-home-5-line fs8"></i>
         Quizes
       </a>
-      <a href="?page=users" class='v-flex c-c'>
-      <i class="ri-user-3-line fs8"></i>
-        Users
-      </a>
+      <?php
+      if (isAdmin()) {
+      ?>
+        <a href="?page=users" class='v-flex c-c'>
+          <i class="ri-user-3-line fs8"></i>
+          Users
+        </a>
+      <?php
+      }
+      ?>
       <a href="?page=history" class='v-flex c-c'>
-      <i class="ri-file-list-line fs8"></i>
+        <i class="ri-file-list-line fs8"></i>
         history
       </a>
 
-       <a href="?page=upload_questions" class='v-flex c-c'>
-       <i class="ri-questionnaire-line fs8"></i>
-     <span class='no_wrap'>
-     Add questions
+      <a href="?page=upload_questions" class='v-flex c-c'>
+        <i class="ri-questionnaire-line fs8"></i>
+        <span class='no_wrap'>
+          Add questions
 
-     </span>
+        </span>
       </a>
       <a href="?page=user&userid=<?php echo  $_SESSION['user_id'] ?>" class='imgcc v-flex c-c'>
         <img class='profile_image' src="<?php echo  $_SESSION['image_url'] ?>" alt="image">
-       <span class='no_wrap'> Profile info</span>
+        <span class='no_wrap'> Profile info</span>
       </a>
     </div>
   </header>
-  
+
   <div id='main'>
-   
+    <?php
+    if (isset($_GET['user'])) {
+      require_once './components/user.php';
+    }
+    ?>
     <?php
     // echo "welcome ".$_SESSION['username'];
     require_once $page

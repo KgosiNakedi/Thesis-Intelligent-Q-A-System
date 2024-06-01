@@ -33,4 +33,9 @@ if(isset($_SERVER['HTTP_REFERER'])) {
     header('Location: '.$previous);
 }
 }
+
+
+function toJson($data){
+return json_encode($data , true);
+}
 ?>
