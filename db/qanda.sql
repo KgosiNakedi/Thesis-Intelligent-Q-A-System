@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 30, 2024 at 05:29 AM
+-- Generation Time: Jun 13, 2024 at 03:19 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -72,7 +72,13 @@ INSERT INTO `questions` (`id`, `quiz_id`, `created_at`, `question`, `optiona`, `
 (13, '10', '2024-05-30 03:18:35', 'Swim answer is b', 'q1a', 'bb', 's', 'e', 'b'),
 (14, '10', '2024-05-30 03:18:36', 'answer is a', 'aa', 'd', 'c', 'ee', 'a'),
 (15, '11', '2024-05-30 11:25:37', 'the answer is a', 'q1a', 'ghhj', '', '', 'a'),
-(16, '11', '2024-05-30 11:25:37', 'bb', 'nmlkjk', 'qb', 'jlk;kl', 'jklkkk', 'b');
+(16, '11', '2024-05-30 11:25:37', 'bb', 'nmlkjk', 'qb', 'jlk;kl', 'jklkkk', 'b'),
+(17, '12', '2024-05-31 15:06:49', 'aaaaaaaaaaaaaaaaaaaaaaa', 'a', 'b', 'c', '', 'a'),
+(18, '12', '2024-05-31 15:06:49', 'aaa', 'b', 'c', 'd', '', 'b'),
+(19, '13', '2024-05-31 15:13:31', 'Hi', 'ligma ligma ligma', 'ligma ligma ligma', 'ligma ligma ligma', '', 'b'),
+(20, '13', '2024-05-31 15:13:32', 'ligma ligma ligma cc', 'q1a', 'das', 'wq', 'wq', 'c'),
+(21, '14', '2024-05-31 15:37:31', 'In the name of gray', 'choose me', 'wrong', 'wrong', '', 'a'),
+(22, '14', '2024-05-31 15:37:31', 'In the name of gray', 'wrong', 'choose', 'wrong', '', 'b');
 
 -- --------------------------------------------------------
 
@@ -104,7 +110,10 @@ INSERT INTO `quiz` (`id`, `create_by`, `num_questions`, `created_at`, `title`, `
 (8, '23', 2, '2024-05-30 00:10:15', 'the quiz', 'amen'),
 (9, '23', 2, '2024-05-30 00:11:19', 'title', 'fquiz'),
 (10, '23', 3, '2024-05-30 03:18:35', 'The final boss', 'lorem\r\nloremlorem\r\nlorem\r\nlorem\r\nlorem\r\nlorem\r\nlorem\r\nlorem\r\nlorem\r\nlorem\r\nlorem\r\nlorem\r\nlorem\r\nlorem lorem\r\nlorem\r\nlorem\r\nlorem\r\nlorem\r\nlorem\r\nlorem\r\nlorem\r\nlorem\r\nlorem\r\n\r\nlorem\r\nlorem\r\n\r\nlorem\r\nlorem\r\nlorem\r\n'),
-(11, '23', 2, '2024-05-30 11:25:36', 'the quiz', 'quizquizquizquizquizquizquizquizquizquizquizquizquizquizquizquizquizquizquizquizquizquizquizquizquizquizquizv');
+(11, '23', 2, '2024-05-30 11:25:36', 'the quiz', 'quizquizquizquizquizquizquizquizquizquizquizquizquizquizquizquizquizquizquizquizquizquizquizquizquizquizquizv'),
+(12, '23', 2, '2024-05-31 15:06:49', 'yyyyyyyyyyyyyyyy', 'yyyyyyyyyyyyyyyyyyy'),
+(13, '23', 2, '2024-05-31 15:13:31', 'the q', 'lolololololololololololololololololololololololo'),
+(14, '23', 2, '2024-05-31 15:37:31', 'In the name of gray', 'In the name of gray');
 
 -- --------------------------------------------------------
 
@@ -117,23 +126,24 @@ CREATE TABLE `rooms` (
   `created_by` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `title` varchar(255) NOT NULL,
-  `discription` longtext NOT NULL
+  `discription` longtext NOT NULL,
+  `is_closed` int(255) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `rooms`
 --
 
-INSERT INTO `rooms` (`id`, `created_by`, `created_at`, `title`, `discription`) VALUES
-(1, '', '0000-00-00 00:00:00', 'dsad', 'dsadasdas\r\n'),
-(2, '', '0000-00-00 00:00:00', 'asdas', 'dsadsadas\r\n\r\n'),
-(3, '1', '0000-00-00 00:00:00', 'The room', 'Hi hih ihih i\r\n'),
-(4, '1', '0000-00-00 00:00:00', 'Room i', 'Hi msdsadkaskdkhbadhfdabs\r\n'),
-(5, '1', '0000-00-00 00:00:00', 'ghvghvhg', 'gfcngmgmn\r\n'),
-(6, '1', '0000-00-00 00:00:00', 'iuhkui', 'iluhuhkj'),
-(7, '2', '0000-00-00 00:00:00', 'bjbo', 'kbjbobo'),
-(8, '16', '2024-05-19 00:22:42', 'rom', 'd'),
-(9, '18', '2024-05-20 15:33:38', 'room2', 'hehe');
+INSERT INTO `rooms` (`id`, `created_by`, `created_at`, `title`, `discription`, `is_closed`) VALUES
+(1, '', '0000-00-00 00:00:00', 'dsad', 'dsadasdas\r\n', 0),
+(2, '', '0000-00-00 00:00:00', 'asdas', 'dsadsadas\r\n\r\n', 0),
+(3, '1', '0000-00-00 00:00:00', 'The room', 'Hi hih ihih i\r\n', 0),
+(4, '1', '0000-00-00 00:00:00', 'Room i', 'Hi msdsadkaskdkhbadhfdabs\r\n', 0),
+(5, '1', '0000-00-00 00:00:00', 'ghvghvhg', 'gfcngmgmn\r\n', 0),
+(6, '1', '0000-00-00 00:00:00', 'iuhkui', 'iluhuhkj', 0),
+(7, '2', '0000-00-00 00:00:00', 'bjbo', 'kbjbobo', 0),
+(8, '16', '2024-05-19 00:22:42', 'rom', 'd', 0),
+(9, '18', '2024-05-20 15:33:38', 'room2', 'hehe', 0);
 
 -- --------------------------------------------------------
 
@@ -304,7 +314,7 @@ INSERT INTO `users` (`id`, `username`, `password`, `fname`, `lname`, `created_at
 (19, 'jhon@gmail.com', '123', 'ligma', 'lname', '2024-05-28 19:13:36', 'user', 'null'),
 (20, '123@j.com', '123', 'Jhon', 'Doe', '2024-05-28 19:15:22', 'user', 'null'),
 (21, 'jhon@j.com', '123', 'Jhon', 'Doe', '2024-05-28 19:39:50', 'user', '1716896390.jpg'),
-(22, 'jhon@j90.com', '123', 'sam', 'sam', '2024-05-29 19:52:52', 'user', '1716983572.jpg'),
+(22, 'admin@gmail.com', '123', 'sam', 'sam', '2024-05-29 19:52:52', 'admin', '1716983572.jpg'),
 (23, 'jhon@io.com', '123', 'sam', 'sam', '2024-05-29 19:54:33', 'user', '1716983673.jpg');
 
 -- --------------------------------------------------------
@@ -332,7 +342,21 @@ INSERT INTO `user_answers` (`id`, `user_id`, `question_id`, `created_at`, `chose
 (4, 23, 13, '2024-05-30 03:34:37', 'b'),
 (5, 23, 14, '2024-05-30 03:34:37', 'a'),
 (6, 23, 15, '2024-05-30 11:26:08', 'a'),
-(7, 23, 16, '2024-05-30 11:26:08', 'b');
+(7, 23, 16, '2024-05-30 11:26:08', 'b'),
+(8, 23, 10, '2024-05-31 15:05:51', 'b'),
+(9, 23, 11, '2024-05-31 15:05:51', 'c'),
+(10, 23, 10, '2024-05-31 15:06:16', 'b'),
+(11, 23, 11, '2024-05-31 15:06:16', 'b'),
+(12, 23, 17, '2024-05-31 15:06:57', 'a'),
+(13, 23, 18, '2024-05-31 15:06:57', 'a'),
+(14, 23, 17, '2024-05-31 15:06:59', 'a'),
+(15, 23, 18, '2024-05-31 15:06:59', 'a'),
+(16, 23, 19, '2024-05-31 15:13:43', 'b'),
+(17, 23, 20, '2024-05-31 15:13:44', 'c'),
+(18, 23, 21, '2024-05-31 15:37:41', 'a'),
+(19, 23, 22, '2024-05-31 15:37:41', 'b'),
+(20, 23, 1, '2024-05-31 15:51:28', 'a'),
+(21, 23, 2, '2024-05-31 15:51:28', 'b');
 
 -- --------------------------------------------------------
 
@@ -355,7 +379,14 @@ CREATE TABLE `user_quiz` (
 INSERT INTO `user_quiz` (`id`, `user_id`, `created_at`, `score`, `quiz_id`) VALUES
 (1, 23, '2024-05-30 03:16:26', 1, 7),
 (2, 23, '2024-05-30 03:34:37', 3, 10),
-(3, 23, '2024-05-30 11:26:08', 2, 11);
+(3, 23, '2024-05-30 11:26:08', 2, 11),
+(4, 23, '2024-05-31 15:05:51', 0, 9),
+(5, 23, '2024-05-31 15:06:16', 0, 9),
+(6, 23, '2024-05-31 15:06:57', 1, 12),
+(7, 23, '2024-05-31 15:07:00', 1, 12),
+(8, 23, '2024-05-31 15:13:44', 2, 13),
+(9, 23, '2024-05-31 15:37:41', 2, 14),
+(10, 23, '2024-05-31 15:51:29', 0, 3);
 
 --
 -- Indexes for dumped tables
@@ -423,13 +454,13 @@ ALTER TABLE `activity`
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `quiz`
 --
 ALTER TABLE `quiz`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `rooms`
@@ -453,13 +484,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_answers`
 --
 ALTER TABLE `user_answers`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `user_quiz`
 --
 ALTER TABLE `user_quiz`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

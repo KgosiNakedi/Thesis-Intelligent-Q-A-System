@@ -1,8 +1,19 @@
 
 <?php
 require_once './commons/mysql.php';
-$quizs = 
-$Db->query("SELECT q.id,uq.score, q.title, q.created_at,u.username,u.fname,u.lname , q.num_questions from quiz as q INNER join users as u on q.create_by = u.id left outer join user_quiz as uq on q.id = uq.quiz_id  where uq.user_id = ? or uq.user_id is null ORDER BY q.id DESC",[$_SESSION['user_id']])->getRows();
+$args = [$_SESSION['user_id']];
+$sql = "SELECT q.id,uq.score, q.title, q.created_at,u.username,u.fname,u.lname , q.num_questions from quiz as q INNER join users as u on q.create_by = u.id left outer join user_quiz as uq on q.id = uq.quiz_id  where uq.user_id = ? or uq.user_id is null ORDER BY q.id DESC";
+
+if(isset($_GET['search'])){
+  if(!empty($_GET['search'])){
+
+  
+  $args = [$_SESSION['user_id'],$_GET['search']];
+  $sql = "SELECT q.id,uq.score, q.title, q.created_at,u.username,u.fname,u.lname , q.num_questions from quiz as q INNER join users as u on q.create_by = u.id left outer join user_quiz as uq on q.id = uq.quiz_id  where (uq.user_id = ? or uq.user_id is null) and q.title like CONCAT('%',?,'%') ORDER BY q.id DESC ";
+  }
+}
+
+$quizs = $Db->query($sql,$args)->getRows();
 //header('Location: ?page=dsadas');
 
 //echo  toJson($quizs);
@@ -10,7 +21,11 @@ $Db->query("SELECT q.id,uq.score, q.title, q.created_at,u.username,u.fname,u.lna
 ?>
 <div class='mxpw'>
   <form class='h-flex c-c'>
-    <input class='max500 fss' type="text">
+    <input 
+    value="<?php
+    echo isset($_GET['search']) ? $_GET['search'] : '';
+    ?>"
+    class='max500 fss' name= "search" type="text">
     <button class='pbtn ri-search-line bold700'></button>
   </form>
 </div>

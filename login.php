@@ -11,6 +11,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
       $_SESSION['username'] = $res[0]['username'];
       $_SESSION['fname'] = $res[0]['fname'];
       $_SESSION['lname'] = $res[0]['lname'];
+      $_SESSION['role'] = $res[0]['role'];
       $_SESSION['image_url'] = IMG_DIR . '/' . $res[0]['profile_image_filename'];
       header('Location: ./index.php');
    }

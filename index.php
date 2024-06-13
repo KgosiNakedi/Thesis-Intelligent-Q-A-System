@@ -130,7 +130,7 @@ if (isset($_GET['page'])) {
 
       <div class='logo'>
 
-        Logo
+        <a href="./logout.php">Logout</a>
       </div>
       <a href="./" class='v-flex c-c '>
 
