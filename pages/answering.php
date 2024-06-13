@@ -12,7 +12,7 @@ $quizData = $Db->query(
   [$_SESSION['user_id'], $_GET['quiz']]
 )->getRows()[0];
 
-if ($quizData['score']) {
+if ($quizData['score'] !== null) {
   header('Location: ./index.php');
 }
 

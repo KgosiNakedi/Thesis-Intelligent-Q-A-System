@@ -26,5 +26,5 @@ foreach ($_POST as $key => $value) {
 
 $Db->query("INSERT INTO user_quiz (score,quiz_id,user_id) VALUES (?,?,?)",[$numCorrect,$quizid,$_SESSION['user_id']]);
 
-echo 'success';
+header("Location: ../index.php?page=correct_answers&user=$_SESSION[user_id]&quiz=$quizid");
 ?>
