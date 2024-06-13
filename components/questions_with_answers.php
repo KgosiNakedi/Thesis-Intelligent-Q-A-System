@@ -22,7 +22,8 @@
         <?php
         if ($value['optiona']) {
         ?>
-          <div class="h-flex fs-fs gp1rem  <?php echo   $value['answer'] == 'a' ? 'selected' : '' ?> <?php echo   $value['chosen_answer'] == 'a' ? 'chossen' : '' ?>" >
+          <div class="h-flex fs-fs gp1rem  <?php echo   $value['answer'] == 'a' ? 'selected' : '' ?> 
+          <?php  if( isset($value['chosen_answer']))echo   $value['chosen_answer'] == 'a' ? 'chossen' : '' ?>" >
             <label for="question_<?php echo $value['id'] ?>_a" class='pbtn  round1 mxpw option' for="op1">
               A.<?php echo $value['optiona'] ?>
             </label>
@@ -34,7 +35,8 @@
         <?php
         if ($value['optionb']) {
         ?>
-          <div class="h-flex fs-fs gp1rem  <?php echo  $value['answer'] == 'b' ? 'selected':'ligma' ?> <?php echo   $value['chosen_answer'] == 'b' ? 'chossen' : '' ?>">
+          <div class="h-flex fs-fs gp1rem  <?php echo  $value['answer'] == 'b' ? 'selected':'ligma' ?>
+           <?php  if( isset($value['chosen_answer'])) echo   $value['chosen_answer'] == 'b' ? 'chossen' : '' ?>">
             <label for="question_<?php echo $value['id'] ?>_b" class='pbtn  round1 mxpw option' for="op1">
               B.<?php echo $value['optionb'] ?>
             </label>
@@ -46,7 +48,8 @@
         <?php
         if ($value['optionc']) {
         ?>
-          <div class="h-flex fs-fs gp1rem   <?php echo  $value['answer'] == 'c'?'selected' : '' ?> <?php echo   $value['chosen_answer'] == 'c' ? 'chossen' : '' ?>">
+          <div class="h-flex fs-fs gp1rem   <?php echo  $value['answer'] == 'c'?'selected' : '' ?> 
+          <?php if( isset($value['chosen_answer']))echo   $value['chosen_answer'] == 'c' ? 'chossen' : '' ?>">
             <input value='c' required name="question_<?php echo $value['id'] ?>" class='option_radio' id="question_<?php echo $value['id'] ?>_c" type="radio">
             <label for="question_<?php echo $value['id'] ?>_c" class='pbtn  round1 mxpw option' for="op1">
               C.<?php echo $value['optionc'] ?>
@@ -60,7 +63,8 @@
         <?php
         if ($value['optiond']) {
         ?>
-          <div class="h-flex fs-fs gp1rem  <?php echo  $value['answer'] == 'd'?'selected' : '' ?> <?php echo   $value['chosen_answer'] == 'd' ? 'chossen' : '' ?>">
+          <div class="h-flex fs-fs gp1rem  <?php echo  $value['answer'] == 'd'?'selected' : '' ?> 
+          <?php if( isset($value['chosen_answer']))echo   $value['chosen_answer'] == 'd' ? 'chossen' : '' ?>">
             <input value='d' required name="question_<?php echo $value['id'] ?>" class='option_radio' id="question_<?php echo $value['id'] ?>_d" type="radio">
             <label for="question_<?php echo $value['id'] ?>_d" class='pbtn  round1 mxpw option' for="op1">
               D.<?php echo $value['optiond'] ?>
