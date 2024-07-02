@@ -1,0 +1,82 @@
+
+:root {
+  --fs_1: 10.5px;
+  --fs_11: 11.5px;
+  --fs_12: 12.5px;
+  --fs_13: 13px;
+  --fs1: 14px;
+  --fs2: 16px;
+  --fs3: 18px;
+  --fs4: 20px;
+  --fs5: 22px;
+  --fs6: 24px;
+  --fs7: 26px;
+  --fs8: 30px;
+  --fs9: 35px;
+  --fs10: 40px;
+  --fs11: 50px;
+  --fs12: 60px;
+}
+.fs_1 {
+  font-size: var(--fs_1);
+}
+.fs1 {
+  font-size: var(--fs1);
+}
+.fs2 {
+  font-size: var(--fs2);
+}
+.fs3 {
+  font-size: var(--fs3);
+}
+.fs4 {
+  font-size: var(--fs4);
+}
+.fs5 {
+  font-size: var(--fs5);
+}
+.fs6 {
+  font-size: var(--fs6);
+}
+.fs7 {
+  font-size: var(--fs7);
+}
+.fs8 {
+  font-size: var(--fs8);
+}
+.fs9 {
+  font-size: var(--fs9);
+}
+.fs10 {
+  font-size: var(--fs10);
+}
+.fs11 {
+  font-size: var(--fs11);
+}
+.fs12 {
+  font-size: var(--fs12);
+}
+
+/* 
+@font-face {
+  font-family: inter;
+  src: url(../assets/fonts/Inter-VariableFont_slnt,wght.ttf);
+}
+
+@font-face {
+  font-family: anton;
+  src: url(../assets/fonts/Anton-Regular.ttf);
+}
+.ff_anton{
+font-family: anton;
+} */
+
+.ff_inter {
+  font-family: inter;
+}
+.ff_times_new_roman {
+  font-family: 'Times New Roman', Times, serif;
+}
+.italics {
+  font-style: italic;
+}

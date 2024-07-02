@@ -1,0 +1,106 @@
+
+.v-flex {
+  display: flex;
+  flex-direction: column;
+}
+.v-flex_rev{
+  display: flex;
+  flex-direction: column-reverse;
+}
+.h-flex-rev{
+  display: flex;
+  flex-direction: row-reverse;
+}
+.flex_rev{
+  flex-direction: row-reverse;
+}
+.c-c {
+  justify-content: center;
+  align-items: center;
+}
+.sb-c {
+  justify-content: space-between;
+  align-items: center;
+}
+.h-flex {
+  display: flex;
+  flex-direction: row;
+}
+.fs-fe
+{
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+.fs-fs
+{
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.fs-c
+{
+  justify-content: flex-start;
+  align-items: center;
+}
+.fe-fs
+{
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.fe-c
+{
+  justify-content: flex-end;
+  align-items: center;
+}
+.fe-fe
+{
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.c-fs
+{
+  justify-content: center;
+  align-items: flex-start;
+}
+.c-fe
+{
+  justify-content: center;
+  align-items: flex-end;
+}
+.sb-fs
+{
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.sb-fe
+{
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.sa-c
+{
+  justify-content: space-around;
+  align-items: center;
+}
+.sa-fs
+{
+  justify-content: space-around;
+  align-items: flex-start;
+}
+.sa-fs
+{
+  justify-content: space-around;
+  align-items: flex-end;
+}
+.fr{
+  flex-wrap: wrap;
+}
+.fss{
+  align-self: stretch;
+}
+.fsc{
+  justify-content: stretch;
+}
+.fg ,.fg1{
+  flex-grow: 1;
+}
